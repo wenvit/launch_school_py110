@@ -372,3 +372,192 @@ Words consist of any sequence of non-space characters.
 # print(word_sizes(string) == {6: 1, 2: 1, 4: 1})
 
 # print(word_sizes('') == {})
+
+# - - - - - - - - - - - - - -
+
+'''
+Letter Counter (Part 2) Problem Statement
+Modify the word_sizes function from the previous exercise to exclude
+non-letters when determining word size. For instance, the word 
+size of "it's" is 3, not 4.
+
+'''
+
+##### PEDAC #####
+
+# Define problem
+# 1. Input: string of zero or more space-separated words
+#    Output: dictionary showing number of words of different sizes
+
+# 2. Explicit rules:
+#    - Input string can contain zero or more words.
+#    - Words are separated by spaces.
+#    - Words consist of any sequence of non-space characters.
+
+# 3. Implicit rules:
+#    - Dictionary keys are the word length, and values are the
+#      number of words of that length.
+#    - Punctuation and other non-space characters should not be counted 
+#      when determining word length.
+#    - Order of the key-value pairs doesn't matter.
+#    - An empty string should result in an empty dictionary.
+
+# Test cases - provided
+
+# All of these examples should print True
+
+# string = 'Four score and seven.'
+# print(word_sizes(string) == {4: 1, 5: 2, 3: 1})
+
+# string = 'Hey diddle diddle, the cat and the fiddle!'
+# print(word_sizes(string) == {3: 5, 6: 3})
+
+# string = 'Humpty Dumpty sat on a w@ll'
+# print(word_sizes(string) == {6: 2, 3: 2, 2: 1, 1: 1})
+
+# string = "What's up doc?"
+# print(word_sizes(string) == {5: 1, 2: 1, 3: 1})
+
+# print(word_sizes('') == {})
+
+# Data structures
+#  - String inputs
+#  - Dictionary outputs
+#  - Use a list for the interim step of splitting the string into
+#    individual words for looping over.
+
+# Algorithm
+# 1. Initialize empty dictionary for result.
+# 2. "Clean" the string by removing any non-alpha characters that aren't
+# #  spaces.
+# 2. Split input string based on spaces into individual words.
+#    Put words in list.
+# 3. Loop over list of words. For each word:
+#     - Count length of word
+#     - Add key of word length to dictionary if it doesn't already exist
+#       and set value for that key to 1
+#       If key of word length is already in dictionary, increment value
+#       for that key by 1
+
+
+# Code implementation
+
+# def clean_string(input_string):
+#     cleaned = ''
+
+#     for char in input_string:
+#         if char.isalpha() or char.isspace():
+#             cleaned += char.lower()
+#     return cleaned
+
+# def word_sizes(input_string):
+#     result = {}
+
+#     cleaned_string = clean_string(input_string)
+
+#     words = cleaned_string.split()
+
+#     for word in words:
+#         dict_key = len(word)
+#         result[dict_key] = result.get(dict_key, 0) + 1
+
+#     return result
+
+# string = 'Four score and seven.'
+# print(word_sizes(string) == {4: 1, 5: 2, 3: 1})
+
+# string = 'Hey diddle diddle, the cat and the fiddle!'
+# print(word_sizes(string) == {3: 5, 6: 3})
+
+# string = 'Humpty Dumpty sat on a w@ll'
+# print(word_sizes(string) == {6: 2, 3: 2, 2: 1, 1: 1})
+
+# string = "What's up doc?"
+# print(word_sizes(string) == {5: 1, 2: 1, 3: 1})
+
+# print(word_sizes('') == {})
+
+# - - - - - - - - - - - - - -
+
+'''
+Letter Swap
+Given a string of words separated by spaces, write a 
+function that swaps the first and last letters of every word.
+
+You may assume that every word contains at least one letter, 
+and that the string will always contain at least one word. 
+You may also assume that each string contains nothing but 
+words and spaces, and that there are no leading, trailing, 
+or repeated spaces.
+
+
+'''
+##### PEDAC #####
+
+# Define problem
+# 1. Input: string of words separated by spaces
+#    Output: new string of words with first & last letters 
+#            of every word swapped
+
+# 2. Explicit rules:
+#  - Every word contains at least one letter.
+#  - String always contains at least one word.
+#  - Each string contains nothing but words and spaces
+#  - No leading, trailing, or repeated spaces
+
+# 3. Implicit rules:
+#  - Smallest word is one letter
+#  - String will not contain digits, punctuation or other
+#    non-alpha characters or spaces
+
+# Test cases - provided
+
+# print(swap('Oh what a wonderful day it is')
+#       == "hO thaw a londerfuw yad ti si")  # True
+# print(swap('Abcde') == "ebcdA")            # True
+# print(swap('a') == "a")                    # True
+
+# Data structures
+#  - String inputs
+#  - String output
+#  - A list as interim structure for string manipulation
+
+# Algorithm
+# 1. Initialize an empty list for storing the swapped letter words.
+# 2. Split string into words by the spaces. Put into another list.
+# 2. Loop over each word in the list. Swap the first & last letters
+#    of each word and append into the list for the swapped letter words.
+# 3. Join the swapped-letter words separated by spaces into a new string.
+
+# Code implementation
+
+def swap(input_string):
+
+    original_words = input_string.split()
+    swapped_words = []
+
+    if len(input_string) == 1:
+        return input_string
+
+    for word in original_words:
+        if len(word) > 1:
+            switcheroo = word[-1] + word[1:-1] + word[0]
+            swapped_words.append(switcheroo)
+        else:
+            swapped_words.append(word)
+
+    return ' '.join(swapped_words)
+
+print(swap('Oh what a wonderful day it is')
+      == "hO thaw a londerfuw yad ti si")  # True
+print(swap('Abcde') == "ebcdA")            # True
+print(swap('a') == "a")                    # True
+
+
+
+
+
+
+
+
+
