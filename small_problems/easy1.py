@@ -525,34 +525,88 @@ or repeated spaces.
 # Algorithm
 # 1. Initialize an empty list for storing the swapped letter words.
 # 2. Split string into words by the spaces. Put into another list.
-# 2. Loop over each word in the list. Swap the first & last letters
-#    of each word and append into the list for the swapped letter words.
+# 3. Loop over each word in the list. If length of word > 1, wwap the 
+#    first & last letters of word and append into the list for 
+#    the swapped letter words. If length of word = 1, append the word
+#    into the list as is.
 # 3. Join the swapped-letter words separated by spaces into a new string.
 
 # Code implementation
 
-def swap(input_string):
+# def swap(input_string):
 
-    original_words = input_string.split()
-    swapped_words = []
+#     original_words = input_string.split()
+#     swapped_words = []
 
-    if len(input_string) == 1:
-        return input_string
+#     if len(input_string) == 1:
+#         return input_string
 
-    for word in original_words:
-        if len(word) > 1:
-            switcheroo = word[-1] + word[1:-1] + word[0]
-            swapped_words.append(switcheroo)
-        else:
-            swapped_words.append(word)
+#     for word in original_words:
+#         if len(word) > 1:
+#             switcheroo = word[-1] + word[1:-1] + word[0]
+#             swapped_words.append(switcheroo)
+#         else:
+#             swapped_words.append(word)
 
-    return ' '.join(swapped_words)
+#     return ' '.join(swapped_words)
 
-print(swap('Oh what a wonderful day it is')
-      == "hO thaw a londerfuw yad ti si")  # True
-print(swap('Abcde') == "ebcdA")            # True
-print(swap('a') == "a")                    # True
+# print(swap('Oh what a wonderful day it is')
+#       == "hO thaw a londerfuw yad ti si")  # True
+# print(swap('Abcde') == "ebcdA")            # True
+# print(swap('a') == "a")                    # True
 
+# - - - - - - - - - - - - - -
+
+'''
+Convert a String to a Number
+
+Write a function that takes a string of digits and
+returns the appropriate number as an integer. 
+You may not use any of the standard conversion 
+functions available in Python, such as int. 
+Your function should calculate the result by 
+using the characters in the string.
+
+For now, do not worry about leading + or - signs, 
+nor should you worry about invalid characters; 
+assume all characters are numeric.
+
+
+'''
+##### PEDAC #####
+
+# Define problem
+# 1. Input: string of digits
+#    Output: integer corresponding to the string
+
+# 2. Explicit rules:
+#  - Cannot use any python functions to convert the string to 
+#    an integer, that is, cannot use int() constructor function
+#  - Assume all characters in the string are numeric.
+#  - Don't worry about invalid characters.
+
+# Test cases - provided
+
+# print(string_to_integer("4321") == 4321)  # True
+# print(string_to_integer("570") == 570)    # True
+
+# Data structures
+#  - String inputs
+#  - Integer output
+#  - List to store interim integers while processing the string
+
+# Algorithm
+# 1. Initialize an empty list object for storing integers corresponding
+#    to each string digit.
+# 2. Determine length of input string. 
+# 3. Working from left to right on the input string, raise each 
+# 2. Loop over a range of integers based on the length of the input
+#    string. In each loop, raise 10 to the power of 
+# Code implementation
+
+
+print(string_to_integer("4321") == 4321)  # True
+print(string_to_integer("570") == 570)    # True
 
 
 
