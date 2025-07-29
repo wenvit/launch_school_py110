@@ -24,54 +24,103 @@ use the string_to_integer function from the previous exercise.
 
 # Code implementation
 
+# 1. My original approach --> see below for more concise solution
+# after reviewing LS solution
+
 # helper functions
 
-def separate_sign_and_str(input_str):
+# def separate_sign_and_str(input_str):
 
-    if input_str[0] in ['+', '-']:
-        digit_str = input_str[1:]
-        sign = input_str[0]
-    else:
-        digit_str = input_str
-        sign = '+'
+#     if input_str[0] in ['+', '-']:
+#         digit_str = input_str[1:]
+#         sign = input_str[0]
+#     else:
+#         digit_str = input_str
+#         sign = '+'
 
-    return [sign, digit_str]
+#     return [sign, digit_str]
 
-def map_digits(digit_str):
+# def map_digits(digit_str):
 
-    string_to_int_mapper = {
-        '0': 0,
-        '1': 1,
-        '2': 2,
-        '3': 3,
-        '4': 4,
-        '5': 5,
-        '6': 6,
-        '7': 7,
-        '8': 8,
-        '9': 9,
-    }
+#     string_to_int_mapper = {
+#         '0': 0,
+#         '1': 1,
+#         '2': 2,
+#         '3': 3,
+#         '4': 4,
+#         '5': 5,
+#         '6': 6,
+#         '7': 7,
+#         '8': 8,
+#         '9': 9,
+#     }
 
-    return string_to_int_mapper[digit_str]
+#     return string_to_int_mapper[digit_str]
 
-def string_to_signed_integer(num_string):
+# def string_to_signed_integer(num_string):
 
-    nums = []
-    power_transformation = []
+#     nums = []
+#     power_transformation = []
 
-    sign_and_str = separate_sign_and_str(num_string)
-    powers = range(len(sign_and_str[1]) - 1, -1, -1)
+#     sign_and_str = separate_sign_and_str(num_string)
+#     powers = range(len(sign_and_str[1]) - 1, -1, -1)
 
-    for digit in sign_and_str[1]:
-        nums.append(map_digits(digit))
+#     for digit in sign_and_str[1]:
+#         nums.append(map_digits(digit))
 
-    for idx, num in enumerate(nums):
-        if sign_and_str[0] == '+':
-            power_transformation.append(num * 10**powers[idx])
-        else:
-            power_transformation.append(-num * 10**powers[idx])
+#     for idx, num in enumerate(nums):
+#         if sign_and_str[0] == '+':
+#             power_transformation.append(num * 10**powers[idx])
+#         else:
+#             power_transformation.append(-num * 10**powers[idx])
 
-    return sum(power_transformation)
+#     return sum(power_transformation)
+
+
+# 2. Another way after reviewing LS solution 
+#  ==> much simpler!
+
+# def map_digits(digit_str):
+
+#     string_to_int_mapper = {
+#         '0': 0,
+#         '1': 1,
+#         '2': 2,
+#         '3': 3,
+#         '4': 4,
+#         '5': 5,
+#         '6': 6,
+#         '7': 7,
+#         '8': 8,
+#         '9': 9,
+#     }
+
+#     return string_to_int_mapper[digit_str]
+
+# def string_to_integer(num_string):
+
+#     powers = range(len(num_string) - 1, -1, -1)
+#     nums = []
+#     power_transformation = []
+
+#     for digit in num_string:
+#         nums.append(map_digits(digit))
+
+#     for idx, num in enumerate(nums):
+#         power_transformation.append(num * 10**powers[idx])
+
+#     return sum(power_transformation)
+
+# def string_to_signed_integer(signed_num_string):
+
+#     match signed_num_string[0]:
+#         case '+':
+#             return string_to_integer(signed_num_string[1:])
+#         case '-':
+#             return -string_to_integer(signed_num_string[1:])
+#         case _:
+#             return string_to_integer(signed_num_string)
+
 
 # print(string_to_signed_integer("4321") == 4321)  # True
 # print(string_to_signed_integer("-570") == -570)  # True

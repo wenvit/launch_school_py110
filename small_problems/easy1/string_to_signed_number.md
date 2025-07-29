@@ -65,6 +65,17 @@ print(string_to_signed_integer("+100") == 100)   # True
      the power of 0. Store the results of these calculations in a list.
 5. Sum the integers in the list.
 
+# Revised Algorithm After Reviewing LS Solution
+1. If signed number string starts with a + or - character,
+   strip off the sign and pass remaining digits to the original 
+   string_to_integer function from previous problem. 
+2. If number string doesn't start with a + or -, pass the string 
+   as is to the string_to_integer function.
+3. Return the return value from string_to_integer as is (positive)
+   number if number string starts with + or no sign. 
+4. Return the negative of the return value from string_to_integer
+   if string starts with - character.
+
 
 
 
