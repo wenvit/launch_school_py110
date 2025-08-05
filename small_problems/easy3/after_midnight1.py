@@ -13,15 +13,18 @@ should work with any integer input.
 You may not use Python's datetime module.
 '''
 
+MINS_PER_HR = 60
+MINS_PER_DAY = 60 * 24
+
 def format_time(input_int):
     return str(input_int).rjust(2, '0')
 
 def time_of_day(input_minutes):
 
-    hrs, mins = divmod(abs(input_minutes), 60)
+    hrs, mins = divmod(abs(input_minutes), MINS_PER_HR)
 
-    if abs(input_minutes) >= 1440:
-        days, min_remain = divmod(abs(input_minutes), 1440)
+    if abs(input_minutes) >= MINS_PER_DAY:
+        days, min_remain = divmod(abs(input_minutes), MINS_PER_DAY)
         hrs, mins = divmod(min_remain, 60)
 
     if input_minutes < 0:
